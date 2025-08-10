@@ -25,6 +25,7 @@ def preprocess_data():
 
 preprocess_data()
 
+
 def plot_active_cases(state=None, start_date=None, end_date=None):
     filtered_df = covid_df
     if state:
@@ -41,6 +42,7 @@ def plot_active_cases(state=None, start_date=None, end_date=None):
     plt.ylabel("Frequency")
     plt.tight_layout()
     plt.show()
+
 
 def plot_deaths(state=None, start_date=None, end_date=None):
     filtered_df = covid_df
@@ -64,6 +66,7 @@ def plot_vaccination(state=None):
     if state:
         filtered_df = filtered_df[filtered_df['State'] == state]
     
+    
     if not state:
 
         total_vaccinations = vaccine_df.groupby('State')['Total'].sum()
@@ -75,6 +78,7 @@ def plot_vaccination(state=None):
     plt.title(f"Vaccination Distribution for {state if state else 'All States'}", size=25)
     plt.axis('equal')  
     plt.show()
+
 
 def display_top_states(criteria):
     if criteria == "Maximum Deaths":
@@ -95,24 +99,29 @@ def display_top_states(criteria):
     plt.tight_layout()
     plt.show()
 
+
 class COVID19AnalysisApp:
     def __init__(self, root): 
         self.root = root
         self.root.title("COVID-19 Data Analysis in India")
 
+   
         self.title_label = ttk.Label(root, text="COVID-19 Data Analysis", font=("Helvetica", 16))
         self.title_label.pack(pady=10)
 
+  
         self.state_label = ttk.Label(root, text="Enter State (Leave blank for all states):")
         self.state_label.pack(pady=5)
         self.state_entry = ttk.Entry(root)
         self.state_entry.pack(pady=5)
+
 
         self.start_date_label = ttk.Label(root, text="Enter Start Date (YYYY-MM-DD):")
         self.start_date_label.pack(pady=5)
         self.start_date_entry = ttk.Entry(root)
         self.start_date_entry.pack(pady=5)
 
+        
         self.end_date_label = ttk.Label(root, text="Enter End Date (YYYY-MM-DD):")
         self.end_date_label.pack(pady=5)
         self.end_date_entry = ttk.Entry(root)
